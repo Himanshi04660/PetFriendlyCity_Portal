@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paw It Forward 🐾</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #fdfdfd;
+      color: #333;
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      color: #ff6600;
+    }
+
+    .cta-buttons button {
+      margin: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      background: #ff6600;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .form-section {
+      padding: 2rem;
+      background: #fffbe6;
+      text-align: center;
+    }
+
+    .form-section form {
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-section input,
+    .form-section select,
+    .form-section button {
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .form-section button {
+      background: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+
+    .stories,
+    .carousel-section {
+      padding: 2rem;
+    }
+
+    .story-cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card.placeholder {
+      font-style: italic;
+      color: #aaa;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+    }
+
+    .pet-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      min-width: 200px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .pet-card img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .resources-section {
+      padding: 2rem;
+      background-color: #eef9f3;
+    }
+
+    .resources-section h2 {
+      text-align: center;
+      color: #2d8659;
+    }
+
+    .resources-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 250px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .resource-card h4 {
+      margin-top: 0.5rem;
+      color: #ff6600;
+    }
+
+    .resource-card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    #pawbuddy-chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    #chat-open-btn {
+      background: #ff6600;
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    #chatbox {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    #chatbox h3 {
+      margin-top: 0;
+    }
+
+    #chatbox input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16" alt="Hero" class="hero-img">
+    <div class="hero-text">
+      <h1>Paw it Forward: A Movement for Pawsitive Change 🐾</h1>
+      <div class="cta-buttons">
+        <button onclick="alert('Thank you for joining!')">Join the Movement</button>
+        <button onclick="document.getElementById('volunteer-form').scrollIntoView()">Volunteer Now</button>
+        <button onclick="alert('Learn more about our campaign on social media!')">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer Form -->
+  <section class="form-section" id="volunteer-form">
+    <h2>Volunteer with Us</h2>
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="Full Name" required>
+      <input type="text" placeholder="City" required>
+      <select required>
+        <option value="">Select Role Preference</option>
+        <option value="event">Event Organizer</option>
+        <option value="awareness">Awareness Campaigner</option>
+        <option value="media">Social Media Volunteer</option>
+      </select>
+      <button type="submit">Sign Up</button>
+    </form>
+  </section>
+
+  <!-- Impact Stories -->
+  <section class="stories">
+    <h2>Impact Stories</h2>
+    <div class="story-cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006" alt="Bella the dog" style="width:100%; border-radius: 10px;">
+        <h3>Bella’s Big Walk</h3>
+        <p>A rescued pup that inspired a whole town to go leash-free and loving it.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131" alt="Cat Story" style="width:100%; border-radius: 10px;">
+        <h3>Whiskers’ Homecoming</h3>
+        <p>Once a stray, now the queen of her home and hearts alike.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6" alt="Rabbit Story" style="width:100%; border-radius: 10px;">
+        <h3>Hopper's Haven</h3>
+        <p>Found in a box, now hopping freely in his new home garden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pet Adoption Carousel -->
+  <section class="carousel-section">
+    <h2>Find Your Furry Friend</h2>
+    <div class="carousel">
+      <div class="pet-card">
+        <img src="https://images.unsplash.com/photo-1555685812-4b943f1cb0eb" alt="Max">
+        <h4>Max</h4>
+        <p>Gentle, loves walks, perfect for families.</p>
+      </div>
+      <div class="pet-card">
+        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36" alt="Luna">
+        <h4>Luna</h4>
+        <p>Playful and sweet, looking for cuddles!</p>
+      </div>
+      <div class="pet-card">
+        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d" alt="Charlie">
+        <h4>Charlie</h4>
+        <p>Loyal, trained, and ready for his forever home.</p>
+      </div>
+      <div class="pet-card">
+        <img src="nemo.jpeg" alt="Nemo">
+        <h4>Nemo</h4>
+        <p>Colorful and calm, a fish friend with flair!</p>
+      </div>
+      <div class="pet-card">
+        <img src="rabbit.jpeg" alt="Buddy the Bunny">
+        <h4>Buddy</h4>
+        <p>Soft, shy, and totally lovable rabbit.</p>
+      </div>
+      <div class="pet-card">
+        <img src="parrot.jpeg" alt="Polly">
+        <h4>Polly</h4>
+        <p>Talkative parrot, always up for a chat!</p>
+      </div>
+      <div class="pet-card">
+        <img src="turtle.jpeg" alt="Turtle">
+        <h4>Shelldon</h4>
+        <p>Relaxed turtle, slow-paced and sweet-hearted.</p>
+      </div>
+    </div>
+  </section>
+  
+  
+
+
+  <!-- Resources Section -->
+  <section class="resources-section">
+    <h2>Resources for Pet Lovers</h2>
+    <div class="resources-list">
+      <div class="resource-card">
+        <h4>🐶 Pet Care 101</h4>
+        <p>Learn how to take care of your furry friends with expert tips and beginner guides.</p>
+      </div>
+      <div class="resource-card">
+        <h4>📄 Adoption Guide</h4>
+        <p>A complete checklist and process walkthrough for adopting pets.</p>
+      </div>
+      <div class="resource-card">
+        <h4>📢 Volunteer Training</h4>
+        <p>Access our free training material to help you become an effective volunteer.</p>
+      </div>
+      <div class="resource-card">
+        <h4>🏥 Emergency Help</h4>
+        <p>Find nearby 24/7 vets, animal rescue centers, and helpline numbers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot -->
+  <div id="pawbuddy-chatbot">
+    <button id="chat-open-btn" onclick="toggleChatbox()">🐾 Chat with PawBuddy</button>
+  </div>
+  <div id="chatbox">
+    <h3>PawBuddy 🐾</h3>
+    <div id="chat-content">
+      <p><strong>PawBuddy:</strong> Hi! I'm here to answer your questions. Ask me anything about volunteering, adoption, or events!</p>
+    </div>
+    <input type="text" id="chat-input" placeholder="Ask a question..." onkeypress="handleChat(event)">
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert("Thanks for volunteering! We'll contact you soon. 🐶");
+    }
+
+    function toggleChatbox() {
+      const box = document.getElementById('chatbox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function handleChat(event) {
+      if (event.key === 'Enter') {
+        const input = document.getElementById('chat-input');
+        const chatContent = document.getElementById('chat-content');
+        const userMsg = input.value.trim();
+        if (!userMsg) return;
+
+        chatContent.innerHTML += `<p><strong>You:</strong> ${userMsg}</p>`;
+        input.value = '';
+
+        let response = "Sorry, I didn’t get that. Try asking about adoption, events, or volunteering.";
+        if (/adopt/i.test(userMsg)) response = "You can adopt by visiting our adoption carousel and contacting us!";
+        else if (/volunteer/i.test(userMsg)) response = "Fill out the form above with your role preference. We'd love your help!";
+        else if (/event/i.test(userMsg)) response = "We hold events monthly! Stay tuned on our socials.";
+
+        chatContent.innerHTML += `<p><strong>PawBuddy:</strong> ${response}</p>`;
+        chatContent.scrollTop = chatContent.scrollHeight;
+      }
+    }
+  </script>
+</body>
+
+</html>
+
+<footer style="text-align: center; margin-top: 40px; padding: 20px; font-size: 14px; color: #666;">
+  <p>
+    🐾 Content inspiration and ideas adapted from resources found on the 
+    <a href="https://www.referralwebsite.com" target="_blank" style="color: #007bff; text-decoration: none;">
+      referral website
+    </a>. Huge thanks for the creative spark!
+  </p>
+</footer>
